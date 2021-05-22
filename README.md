@@ -1,10 +1,11 @@
-## TT-SPN: Twin Transformers with Sinusoidal Representation Networks for Video Instance Segmentation
+# TT-SPN: Twin Transformers with Sinusoidal Representation Networks for Video Instance Segmentation
 
+Video instance segmentation is the recently introduced computer vision research are that aims joint detection, segmentation and tracking of instances in the video domain. Recent methods proposed highly sophisticated and multi-stage networks that lead to be unusable in practise. Hence, simple yet effective single stage approaches are needed to be used in practise. To fill the gap, we propose end-to-end transformer based video instance segmentation module with Sinusoidal Representation Networks (SPN), namely TT-SPN, to address this problem. TT-SPN, views the VIS task as direct sequence prediction problem in single stage that enables us to aggregate temporal information with spatial one.
 
 ![TT-SPN](https://github.com/cankocagil/TT-SPN/blob/main/figures/Pipeline.png?raw=true)
 
 
-Video instance segmentation is the recently introduced computer vision research are that aims joint detection, segmentation and tracking of instances in the video domain. Recent methods proposed highly sophisticated and multi-stage networks that lead to be unusable in practise. Hence, simple yet effective single stage approaches are needed to be used in practise. To fill the gap, we propose end-to-end transformer based video instance segmentation module with Sinusoidal Representation Networks (SPN), namely TT-SPN, to address this problem. TT-SPN, views the VIS task as direct sequence prediction problem in single stage that enables us to aggregate temporal information with spatial one. Set of video frame features are extracted by twin transformers that then propagated to original transformer to produce sequence of instance predictions. These produced instance level information by transformers are then passed through modified Sinusoidal Representation Networks to get end instance level class ids and bounding boxes and self-attended convolutions to get segmentation masks. At its core, TT-SPN is natural paradigm that handles the instance segmentation and tracking via similarity learning that enables system to produce fast and accurate set of predictions. TT-SPN is trained end-to-end with set-based global loss that forces unique predictions via bipartite matching. Thus, general complexity of pipeline is significantly decreased without sacrificing quality of segmentation masks. For the first time, VIS problem is addressed without implicit CNN architectures thanks to twin transformers with being one of the fastest approaches. Our method can be easily divided into its sub-components to produce separate instance masks and bounding boxes that will make it unified approach for many vision tasks.  We benchmark our results on YouTube-VIS dataset by comparing competitive baselines and show that TT-SPN outperforms the base VIS model by significant margin.
+ Set of video frame features are extracted by twin transformers that then propagated to original transformer to produce sequence of instance predictions. These produced instance level information by transformers are then passed through modified Sinusoidal Representation Networks to get end instance level class ids and bounding boxes and self-attended convolutions to get segmentation masks. At its core, TT-SPN is natural paradigm that handles the instance segmentation and tracking via similarity learning that enables system to produce fast and accurate set of predictions. TT-SPN is trained end-to-end with set-based global loss that forces unique predictions via bipartite matching. Thus, general complexity of pipeline is significantly decreased without sacrificing quality of segmentation masks. For the first time, VIS problem is addressed without implicit CNN architectures thanks to twin transformers with being one of the fastest approaches. Our method can be easily divided into its sub-components to produce separate instance masks and bounding boxes that will make it unified approach for many vision tasks.  We benchmark our results on YouTube-VIS dataset by comparing competitive baselines and show that TT-SPN outperforms the base VIS model by significant margin.
 
 
 # Installation
@@ -41,15 +42,16 @@ TT-SPN
 │   │   ├── instances_val_sub.json
 ├── models
 ...
-'''
+```
 
 # Training
 
-Training of the model requires at least 8g memory GPU, we performed the experiment on 16g Tesla K80 card. 
+Training of the model requires at least 8g memory GPU, we performed the experiment on 8g Tesla K80 card. 
 
 To train baseline TT-SPN on a single node with n gpus for 18 epochs, run:
+
 ```
-python -m torch.distributed.launch --nproc_per_node=n --use_env main.py --ytvos_path /path/to/ytvos 
+python -m torch.distributed.launch --nproc_per_node=n --use_env main.py --ytvos_path /path/to/ytvos --masks
 ```
 
 # Inference
