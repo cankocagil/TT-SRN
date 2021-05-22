@@ -12,16 +12,25 @@ Video instance segmentation is the recently introduced computer vision research 
 
 We provide installation quidelines for TT-SPN. 
 First, clone our project page as follows.
+
 ```
 git clone https://github.com/cankocagil/TT-SPN.git
 ```
-Then, install PyTorch 1.6 and torchvision 0.7:
+
+We highly recommend the installation of PyTorch and Torchvision beforehand:
+
+```
+conda install -c pytorch pytorch torchvision
+```
+
+Then, install packages from requirements file:
 
 ```
 pip install -r requirements.txt
 ```
 
-Compile DCN module(requires GCC>=5.3, cuda>=10.0)
+Compile Deformable Convolution module(requires GCC>=5.3, cuda>=10.0)
+
 ```
 cd models/dcn
 python setup.py build_ext --inplace
