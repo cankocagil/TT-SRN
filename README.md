@@ -1,4 +1,4 @@
-## TT-SPN: Twin Transformers with Sinusoidal Representation Networks forVideo Instance Segmentation
+## TT-SPN: Twin Transformers with Sinusoidal Representation Networks for Video Instance Segmentation
 
 
 
