@@ -70,7 +70,7 @@ python inference.py --masks --model_path /path/to/model_weights --save_path /pat
 ```
 
 # Acknowledgement
-We would like to thank the [VisTR](https://github.com/Epiphqny/VisTR) and [DETR](https://github.com/facebookresearch/detr) open-source projects for their awesome work, part of the code are modified from their projects.
+We would like to thank the [VisTR](https://github.com/Epiphqny/VisTR), [DETR](https://github.com/facebookresearch/detr), [Vision Transformers](https://github.com/lucidrains/vit-pytorch) and [SPN](https://vsitzmann.github.io/siren/)  open-source projects for their awesome work, part of the code are modified from their projects.
 
 
 
